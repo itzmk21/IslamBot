@@ -64,7 +64,6 @@ DUAS = {
     'Receiving News': 100,
     'Dog Barking': 104,
     'Day Of Arafah': 109,
-    'Amazement': 115,
     'Talbiyah': 120,
     'After Salam': 25,
     'Istikharah': 26,
