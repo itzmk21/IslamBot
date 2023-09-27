@@ -47,7 +47,7 @@ class Mushaf(commands.Cog):
 
     @group.command(name="by_ayah", description="Displays an ayah on its page on the mushaf.")
     @discord.app_commands.describe(
-        surah="The name or number of the ayah's surah, e.g. Al-Ikhlaas or 112",
+        surah="The name or number of the ayah's surah, e.g. Al-Ikhlaas, 112 or إخلاص",
         verse="The ayah within the surah to display, e.g. 225. Defaults to the first ayah.",
         show_tajweed="Should the mushaf highlight where tajweed rules apply?",
         reveal_order="If you specified a number for the surah, whether the number is the surah's revelation order."

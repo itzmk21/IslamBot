@@ -241,7 +241,7 @@ class Tafsir(commands.Cog):
     @group.command(name="get", description="Get the tafsir of a Qur'anic verse.")
     @discord.app_commands.choices(tafsir_name=generate_choices_from_dict(name_mappings))
     @discord.app_commands.describe(
-        surah="The name or number of the verse's surah, e.g. Al-Ikhlaas or 112.",
+        surah="The name or number of the verse's surah, e.g. Al-Ikhlaas, 112 or إخلاص.",
         verse_number="The verse number to fetch.",
         tafsir_name="The name of the tafsir to use.",
     )
