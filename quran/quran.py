@@ -196,8 +196,9 @@ class QuranRequest:
             json = await get_site_json(self.regular_url.format(self.translation.id, self.ref.surah, ayah))
             text = json['translations'][0]['text']
 
-            # Clear HTML tags
-            text = re.sub(CLEAN_HTML_REGEX, ' ', text)
+            # Clean text
+            text = re.sub(CLEAN_HTML_REGEX, ' ', text)  # remove HTML tags
+            text = text.replace('&quot;', '"')  # replace "&quot;" with quotation marks
 
             # Truncate verses longer than 1024 characters
             if len(text) > 1024:
@@ -269,7 +270,7 @@ class Quran(commands.Cog):
 
     @discord.app_commands.command(name="quran", description="Send verses from the Qurʼān.")
     @discord.app_commands.describe(
-        surah="The name or number of the surah to fetch, e.g. Al-Ikhlaas or 112",
+        surah="The name or number of the surah to fetch, e.g. Al-Ikhlaas, 112 or إخلاص",
         start_verse="The first verse to fetch, e.g. 255.",
         end_verse="The last verse to fetch if you want to send multiple verses, e.g. 260",
         translation="The translation to use",

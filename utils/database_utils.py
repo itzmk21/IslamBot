@@ -34,17 +34,21 @@ class DBHandler:
         except:
             return self.default_value
 
-        async with connection.cursor() as cursor:
-            await cursor.execute(f"SELECT {self.column2} "
-                                 f"FROM {self.table_name} "
-                                 f"WHERE {self.column1} = {self.key}")
-            result = await cursor.fetchone()
+        try:
+            async with connection.cursor() as cursor:
+                await cursor.execute(f"SELECT {self.column2} "
+                                     f"FROM {self.table_name} "
+                                     f"WHERE {self.column1} = {self.key}")
+                result = await cursor.fetchone()
+                connection.close()
+
+                if result is None:
+                    return self.default_value
+
+                return result[0]
+        except:
             connection.close()
-
-            if result is None:
-                return self.default_value
-
-            return result[0]
+            return self.default_value
 
     async def _update_data(self, value):
         connection = await self.create_connection()
